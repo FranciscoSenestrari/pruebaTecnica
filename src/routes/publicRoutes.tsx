@@ -1,3 +1,5 @@
-import { RouteObject } from "react-router";
-import Home from "../pages/Home";
-export const publicRoutes: RouteObject[] = [{ path: "/", element: <Home /> }];
+import React from "react";
+import { RouteObject } from "react-router-dom";
+import Login from "../pages/public/Login";
+
+export const publicRoutes: RouteObject[] = [{ path: "/", element: <Login /> }];
