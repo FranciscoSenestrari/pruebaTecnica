@@ -1,9 +1,11 @@
+import { JWT_TOKEN, FIRABASE_API_KEY } from "@/config";
+
 export const getJWT = (): string | null => {
-  return import.meta.env.VITE_JWT || null;
+  return JWT_TOKEN;
 };
 
 export const getAPIUrl = (): string => {
-  return import.meta.env.VITE_API_URL || "";
+  return FIRABASE_API_KEY;
 };
 
 export const getAuthHeaders = (): Record<string, string> => {
@@ -14,7 +16,6 @@ export const getAuthHeaders = (): Record<string, string> => {
   };
 };
 
-// Función para hacer peticiones a la API con JWT
 export const apiRequest = async (
   endpoint: string,
   options: RequestInit = {}

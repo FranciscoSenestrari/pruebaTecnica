@@ -1,9 +1,10 @@
+import { FIRABASE_API_KEY } from "@/config";
 import { getAnalytics } from "firebase/analytics";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_API_URL,
+  apiKey: FIRABASE_API_KEY,
   authDomain: "pruebatecnicapagos360.firebaseapp.com",
   projectId: "pruebatecnicapagos360",
   storageBucket: "pruebatecnicapagos360.firebasestorage.app",

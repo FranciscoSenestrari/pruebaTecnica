@@ -1,5 +1,5 @@
 import React, { ComponentProps } from "react";
-import { cn } from "../utils/utils";
+import { cn } from "@utils/utils";
 
 export default function InputField({
   className,
@@ -7,7 +7,10 @@ export default function InputField({
 }: ComponentProps<"input">) {
   return (
     <input
-      className={cn(className, "w-full border-2 rounded-md p-2 ")}
+      className={cn(
+        className,
+        "w-full border rounded-md px-2  focus:border-blue-500 bg-white"
+      )}
       {...props}
     />
   );

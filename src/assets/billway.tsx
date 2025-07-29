@@ -24,7 +24,6 @@ export default function Billway({
       </metadata>
       <g
         transform="matrix(0.04642019,0,0,-0.04642019,-22.850267,62.566878)"
-        fill="#000000"
         stroke="none"
         id="g1"
       >
