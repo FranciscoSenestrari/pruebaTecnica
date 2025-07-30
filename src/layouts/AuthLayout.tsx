@@ -7,7 +7,7 @@ interface AuthLayoutProps {
   requireAuth?: boolean;
 }
 
-const AuthLayout: React.FC<AuthLayoutProps> = ({ requireAuth = false }) => {
+export default function AuthLayout({ requireAuth = false }: AuthLayoutProps) {
   const { user, loading, isAuthenticated } = useAuth();
 
   if (loading) {
@@ -15,7 +15,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ requireAuth = false }) => {
   }
 
   if (requireAuth && !isAuthenticated) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/" replace />;
   }
 
   if (!requireAuth && isAuthenticated) {
@@ -23,6 +23,4 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ requireAuth = false }) => {
   }
 
   return <Outlet />;
-};
-
-export default AuthLayout;
+}
