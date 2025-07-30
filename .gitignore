@@ -22,7 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
+.firebase
 *storybook.log
 storybook-static
 .storybook
