@@ -2,9 +2,10 @@ import { FIRABASE_API_KEY } from "@/config";
 import { getAnalytics } from "firebase/analytics";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getAPIUrl } from "./auth";
 
 const firebaseConfig = {
-  apiKey: FIRABASE_API_KEY,
+  apiKey: getAPIUrl(),
   authDomain: "pruebatecnicapagos360.firebaseapp.com",
   projectId: "pruebatecnicapagos360",
   storageBucket: "pruebatecnicapagos360.firebasestorage.app",
@@ -13,7 +14,6 @@ const firebaseConfig = {
   measurementId: "G-EFY7956K4F",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);

@@ -11,12 +11,12 @@ import {
 export const UserSchema = object({
   email: pipe(
     string(),
-    nonEmpty("Por favor ingrese su email."),
-    email(" El formato del email no es valido.")
+    nonEmpty("Please enter your email."),
+    email("Please enter a valid email address.")
   ),
   password: pipe(
     string(),
-    nonEmpty("Por favor ingrese su contraseña."),
-    minLength(8, "La contraseña debe tener al menos 8 caracteres.")
+    nonEmpty("Please enter your password."),
+    minLength(8, "Password must be at least 8 characters long.")
   ),
 });

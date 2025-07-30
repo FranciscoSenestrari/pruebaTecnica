@@ -14,12 +14,10 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ requireAuth = false }) => {
     return <LoadingPage />;
   }
 
-  // Si requiere autenticación y no está autenticado, redirigir a login
   if (requireAuth && !isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
 
-  // Si no requiere autenticación y está autenticado, redirigir a dashboard
   if (!requireAuth && isAuthenticated) {
     return <Navigate to="/dashboard" replace />;
   }
