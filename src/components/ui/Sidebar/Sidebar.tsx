@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import CustomButton from "../Button/CustomButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logout } from "@/services/auteticate";
 import logoutSVG from "@/assets/logout.svg";
 import ArrowSVG from "@/assets/arrow";
@@ -8,11 +8,12 @@ import Billway from "@/assets/billway";
 
 export default function Sidebar() {
   const [open, setOpen] = useState(true);
+  const navigate = useNavigate();
 
   return (
     <>
       <button
-        className="fixed top-4 left-4 z-30 bg-gray-200 rounded p-2 shadow"
+        className="fixed top-4 left-4 z-30 bg-gray-100 rounded p-2 shadow"
         onClick={() => setOpen((prev) => !prev)}
       >
         <ArrowSVG
@@ -36,8 +37,20 @@ export default function Sidebar() {
             </h2>
           </div>
           <nav className="space-y-2 text-sm font-medium">
-            <CustomButton className="w-full">Home</CustomButton>
-            <CustomButton className="w-full">Create Payment</CustomButton>
+            <CustomButton
+              className="w-full"
+              onClick={() => navigate("/dashboard")}
+            >
+              Home
+            </CustomButton>
+            <CustomButton
+              className="w-full"
+              onClick={() => {
+                navigate("/payment-request");
+              }}
+            >
+              Peyment Request
+            </CustomButton>
           </nav>
         </div>
         <div className="flex botom-0">
