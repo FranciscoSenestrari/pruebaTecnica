@@ -1,7 +1,8 @@
 import React from "react";
 import { Outlet, Navigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-import LoadingPage from "../pages/LoadingPage";
+import DashboardLayout from "./DashboardLayout";
+import LoaderCompoenent from "@/components/LoaderComponent/LoaderCompoenent";
 
 interface AuthLayoutProps {
   requireAuth?: boolean;
@@ -11,7 +12,7 @@ export default function AuthLayout({ requireAuth = false }: AuthLayoutProps) {
   const { user, loading, isAuthenticated } = useAuth();
 
   if (loading) {
-    return <LoadingPage />;
+    return <LoaderCompoenent />;
   }
 
   if (requireAuth && !isAuthenticated) {
@@ -22,5 +23,5 @@ export default function AuthLayout({ requireAuth = false }: AuthLayoutProps) {
     return <Navigate to="/dashboard" replace />;
   }
 
-  return <Outlet />;
+  return <DashboardLayout />;
 }

@@ -11,7 +11,7 @@ export default function NotfoundSVG({ ...props }: ComponentProps<"svg">) {
       {...props}
     >
       <defs id="defs1" />
-      <g id="layer1" className="animate-bounce">
+      <g id="layer1" className="animate-pulse">
         <path
           id="path1"
           style={{
