@@ -1,4 +1,4 @@
-import Sidebar from "@/components/ui/Sidebar";
+import Sidebar from "@/components/ui/Sidebar/Sidebar";
 import { auth } from "@/utils/firabase";
 import React from "react";
 import { Outlet } from "react-router";

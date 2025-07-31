@@ -46,7 +46,7 @@ export default function Login() {
       <div className="flex items-center justify-center gap-2">
         <Billway className="w-1/3 fill-blue-500  shadow-blue-700 drop-shadow-lg" />
         <h1 className="text-2xl font-bold shadow-blue-700 drop-shadow-lg">
-          Payment
+          PayManager
         </h1>
       </div>
       <form
