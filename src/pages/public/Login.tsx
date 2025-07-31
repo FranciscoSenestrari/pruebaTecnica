@@ -4,10 +4,12 @@ import CustomButton from "@/components/ui/Button/CustomButton";
 import { useForm } from "react-hook-form";
 import { valibotResolver } from "@hookform/resolvers/valibot";
 import { UserSchema } from "@/schemas/UserSchema";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { login } from "@/services/auteticate";
 import toast from "react-hot-toast";
+import { FirebaseError } from "firebase/app";
+import LoaderCompoenent from "@/components/LoaderComponent/LoaderCompoenent";
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
@@ -28,8 +30,9 @@ export default function Login() {
             toast.success("Login successful!");
             navigator("/dashboard");
           }
-        } catch (err) {
+        } catch (err: FirebaseError | any) {
           console.error("Error:", err);
+          toast.error(`Login failed, ${err}"`);
         } finally {
           setLoading(false);
         }
@@ -39,6 +42,7 @@ export default function Login() {
   };
   return (
     <div className="flex flex-col items-center justify-center gap-4 ">
+      {loading && <LoaderCompoenent />}
       <div className="flex items-center justify-center gap-2">
         <Billway className="w-1/3 fill-blue-500  shadow-blue-700 drop-shadow-lg" />
         <h1 className="text-2xl font-bold shadow-blue-700 drop-shadow-lg">
