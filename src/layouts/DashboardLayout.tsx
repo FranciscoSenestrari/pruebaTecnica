@@ -7,11 +7,8 @@ export default function DashboardLayout() {
   const user = auth.currentUser?.email || "Guest";
   return (
     <div className="flex h-screen w-screen font-sans bg-white text-black">
-      {/* Sidebar */}
       <Sidebar />
-      {/* Main content */}
       <div className="flex flex-col flex-1">
-        {/* Header */}
         <header className="flex justify-end items-center p-4 bg-gray-100 shadow-md z-10">
           <span className="font-medium">Welcome {user}</span>
         </header>
