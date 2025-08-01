@@ -75,6 +75,14 @@ export default function Sidebar() {
             >
               Peyment Request
             </CustomButton>
+            <CustomButton
+              className="w-full"
+              onClick={() => {
+                navigate("/payment-list");
+              }}
+            >
+              Payment List
+            </CustomButton>
           </nav>
         </div>
         <div className="flex botom-0">

@@ -1,4 +1,5 @@
 import Dashboard from "@/pages/private/Dashboard";
+import PaymentList from "@/pages/private/PaymentList";
 import PeymentReques from "@/pages/private/PeymentReques";
 import React from "react";
 import { RouteObject } from "react-router-dom";
@@ -11,5 +12,9 @@ export const privateRoutes: RouteObject[] = [
   {
     path: "/payment-request",
     element: <PeymentReques />,
+  },
+  {
+    path: "/payment-list",
+    element: <PaymentList />,
   },
 ];
