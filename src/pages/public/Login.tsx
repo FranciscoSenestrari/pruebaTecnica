@@ -10,6 +10,7 @@ import { login } from "@/services/auteticate";
 import toast from "react-hot-toast";
 import { FirebaseError } from "firebase/app";
 import LoaderCompoenent from "@/components/LoaderComponent/LoaderCompoenent";
+import "./style.css";
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
