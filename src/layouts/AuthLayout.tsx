@@ -3,6 +3,7 @@ import { Outlet, Navigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import DashboardLayout from "./DashboardLayout";
 import LoaderCompoenent from "@/components/LoaderComponent/LoaderCompoenent";
+import RouteTracker from "../components/RouterTracker/RouterTrackerWrapper";
 
 interface AuthLayoutProps {
   requireAuth?: boolean;
@@ -23,5 +24,10 @@ export default function AuthLayout({ requireAuth = false }: AuthLayoutProps) {
     return <Navigate to="/dashboard" replace />;
   }
 
-  return <DashboardLayout />;
+  return (
+    <>
+      <RouteTracker />
+      <DashboardLayout />
+    </>
+  );
 }

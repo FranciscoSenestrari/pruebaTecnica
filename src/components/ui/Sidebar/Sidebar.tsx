@@ -1,33 +1,57 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef } from "react";
 import CustomButton from "../Button/CustomButton";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "@/services/auteticate";
 import logoutSVG from "@/assets/logout.svg";
 import ArrowSVG from "@/assets/arrow";
 import Billway from "@/assets/billway";
+import { useSidebar } from "@/store/sidebarStore";
 
 export default function Sidebar() {
-  const [open, setOpen] = useState(true);
+  const { isOpen, toggleSidebar, closeSidebar } = useSidebar();
   const navigate = useNavigate();
+  const sidebarRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isOpen &&
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target as Node) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
+        closeSidebar();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen, closeSidebar]);
 
   return (
     <>
       <button
+        ref={buttonRef}
         className="fixed top-4 left-4 z-30 bg-gray-100 rounded p-2 shadow"
-        onClick={() => setOpen((prev) => !prev)}
+        onClick={toggleSidebar}
       >
         <ArrowSVG
           className={`transition-transform duration-300 ${
-            open ? "rotate-180" : ""
+            isOpen ? "rotate-180" : ""
           }`}
         />
       </button>
 
       <aside
+        ref={sidebarRef}
         className={`transition-all duration-300 bg-gray-100 border-r flex flex-col justify-between py-6 px-4 absolute z-20 h-full ${
-          open ? "w-60 left-0" : "w-0 -left-64 overflow-hidden"
+          isOpen ? "w-60 left-0" : "w-0 -left-64 overflow-hidden"
         }`}
-        style={{ minWidth: open ? "15rem" : "0" }}
+        style={{ minWidth: isOpen ? "15rem" : "0" }}
       >
         <div className="space-y-6">
           <div className="flex flex-col items-center align-middle gap-2 mb-6">
