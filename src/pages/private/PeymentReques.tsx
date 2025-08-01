@@ -1,16 +1,24 @@
 import CustomButton from "@/components/ui/Button/CustomButton";
 import InputField from "@/components/ui/InputField/InputField";
 import { PaymentSchema } from "@/schemas/PayemntSchema";
+import { postData } from "@/services/api";
 import { valibotResolver } from "@hookform/resolvers/valibot";
-import React from "react";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 export default function PeymentReques() {
   const { register, handleSubmit, formState, watch, setError } = useForm({
     resolver: valibotResolver(PaymentSchema),
   });
 
-  const date = watch("first_total");
-  console.log("date:", date);
+  const onSubmit = (data: any) => {
+    postData("/payment-request", {
+      payment_request: {
+        description: data.description,
+        first_due_date: data.first_due_date,
+        first_total: data.first_total,
+        payer_name: data.payer_name,
+      },
+    });
+  };
   return (
     <div className=" flex flex-col ">
       <h1 className="text-2xl font-bold mb-4">Payment Request</h1>
@@ -18,7 +26,7 @@ export default function PeymentReques() {
         <form
           noValidate
           className="space-y-2 flex flex-col w-full max-w-md mt-4 "
-          onSubmit={handleSubmit((data) => console.log(data))}
+          onSubmit={handleSubmit(onSubmit)}
         >
           <div>
             <label className="block text-sm font-medium text-gray-700">
