@@ -6,10 +6,11 @@ import IndexLayout from "@/layouts/IndexLayout";
 
 export const publicRoutes: RouteObject[] = [
   {
-    element: <IndexLayout />,
-    children: [
-      { path: "/", element: <Login /> },
-      { path: "/signIn", element: <SignIn /> },
-    ],
+    lazy: {
+      Component: async () => {
+        return (await import("@/layouts/IndexLayout")).default;
+      },
+    },
+    children: [{ path: "/" }, { path: "/signIn", element: <SignIn /> }],
   },
 ];

@@ -9,7 +9,7 @@ interface AuthLayoutProps {
   requireAuth?: boolean;
 }
 
-export default function AuthLayout({ requireAuth = false }: AuthLayoutProps) {
+export default function AuthLayout({ requireAuth = true }: AuthLayoutProps) {
   const { user, loading, isAuthenticated } = useAuth();
 
   if (loading) {
