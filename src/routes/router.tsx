@@ -4,15 +4,22 @@ import { publicRoutes } from "./publicRoutes";
 import { privateRoutes } from "./privateRoutes";
 import Error404Page from "../pages/Error404Page";
 import AuthLayout from "../layouts/AuthLayout";
-import RootLayout from "../layouts/RootLayout";
 
 export const routes = createBrowserRouter([
   {
-    element: <RootLayout />,
+    lazy: {
+      Component: async () => {
+        return (await import("@/layouts/RootLayout")).default;
+      },
+    },
     children: [
       ...publicRoutes,
       {
-        element: <AuthLayout requireAuth={true} />,
+        lazy: {
+          Component: async () => {
+            return (await import("@/layouts/AuthLayout")).default;
+          },
+        },
         children: [...privateRoutes],
         errorElement: <Error404Page />,
       },
