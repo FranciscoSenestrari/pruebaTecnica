@@ -11,6 +11,9 @@ export const publicRoutes: RouteObject[] = [
         return (await import("@/layouts/IndexLayout")).default;
       },
     },
-    children: [{ path: "/" }, { path: "/signIn", element: <SignIn /> }],
+    children: [
+      { path: "/", element: <Login /> },
+      { path: "/signIn", element: <SignIn /> },
+    ],
   },
 ];

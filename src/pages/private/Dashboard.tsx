@@ -1,5 +1,4 @@
 import DashboardCards from "@/components/ui/DashboardCards/DashboardCards";
-import React from "react";
 import { useActivityStore } from "@/store/recentActivity";
 
 export default function Dashboard() {
