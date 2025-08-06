@@ -53,16 +53,16 @@ export default function Login() {
         className="flex flex-col w-full max-w-md mt-4"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <label>
-          <span className="text-sm font-semibold">Email</span>
+        <label className="text-sm font-semibold">
+          Email
           <InputField
             type="email"
             {...register("email")}
             fieldError={formState.errors.email}
           />
         </label>
-        <label className="mt-4">
-          <span className="text-sm font-semibold">Password</span>
+        <label className="mt-4 text-sm font-semibold">
+          Password
           <InputField
             type="password"
             {...register("password")}
